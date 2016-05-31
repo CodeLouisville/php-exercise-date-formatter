@@ -1,15 +1,17 @@
 <?php
 
-$date = "2016-01-14";
+//$date = "2016-01-14";
+$date = '2000-31-12';
 
 
 function date_formatter ($date){
-	$utime = strtotime($date);
-	if($utime === false){
+	try {
+		return (new DateTime($date))->format("l, F jS Y");
+	} catch (Exception $e){
 		return "";
-	} 
-	return date("l, F jS Y", strtotime($date));
+	}
 }
 
+var_dump (date_formatter($date));
 
 ?>
