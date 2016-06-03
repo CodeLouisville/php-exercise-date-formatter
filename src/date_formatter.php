@@ -1,13 +1,13 @@
 <?php
 
-//$date = "2016-01-14";
-$date = '1-3-2016';
-
-$myDate = explode('-', $date);
+$date = "2012-01-14";
 
 function date_formatter ($date){
 	$myDate = explode('-', $date);
-	if (checkdate($myDate[1], $myDate[2], $myDate[0]) === false){
+	if(strlen($myDate[0]) != 4 || strlen($myDate[1]) != 2 || strlen($myDate[2]) != 2){
+		return "";
+		}
+	elseif (checkdate($myDate[1], $myDate[2], $myDate[0]) === false){
 		return "";
 	}
 	else {
@@ -15,7 +15,8 @@ function date_formatter ($date){
 	}
 }
 
-var_dump (date_formatter($date));
+//var_dump (date_formatter($date)); 
 
 ?>
+
 
