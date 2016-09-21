@@ -13,7 +13,7 @@ function date_formatter($str) {
     
     if (checkdate($date[1], $date[2], $date[0])) {
         $date = new DateTime($str);
-        return $date->format('l, jS F Y');
+        return $date->format('l, F jS Y');
     } else {
         return "";
     }
