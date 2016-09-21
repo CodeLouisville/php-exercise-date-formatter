@@ -9,7 +9,6 @@ function date_formatter($str) {
     
     foreach ($date as $num) {
         if (!is_numeric($num)) {
-            echo "not number ";
             return "";
         }
     }
@@ -18,7 +17,6 @@ function date_formatter($str) {
         $date = new DateTime($str);
         return $date->format('l, F jS Y');
     } else {
-        echo "fail ";
         return "";
     }
 }
