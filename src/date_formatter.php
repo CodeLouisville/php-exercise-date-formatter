@@ -1,9 +1,6 @@
 <?php
 
-function date_formatter($str) {
-    if (strlen($str) !== 10) {
-        return "";
-    }
+function format_date(string $str) {
     
     $date = explode("-", $str);
     
