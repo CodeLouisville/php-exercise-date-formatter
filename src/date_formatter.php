@@ -1,6 +1,6 @@
 <?php
 
-function format_date(string $str) {
+function date_formatter(string $str) {
     
     $date = explode("-", $str);
     
