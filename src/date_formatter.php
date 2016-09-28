@@ -1,5 +1,7 @@
 <?php
 
+
+
 function validateFormat($date){
   if(preg_match('/\d{1,4}-\d{1,2}-\d{1,2}/',$date)) {
     return true;
@@ -8,19 +10,21 @@ function validateFormat($date){
   }
 }
 
-function validateDate($date, $format = 'Y-m-d')
-{
-    $d = DateTime::createFromFormat($format, $date);
-    return $d && $d->format($format) == $date;
+function validateDate($date, $format = 'Y-m-d'){
+  $timestamp = strtotime($date);
+  $new_date = date('Y-m-d', $timestamp);
+
+  $d = DateTime::createFromFormat($format, $new_date);
+  return $d && $d->format($format) == $new_date;
 }
 
 function date_formatter($date){
-  if (is_string($date) && validateFormat($date) && validateDate($date)){
+  if (is_string($date) && validateFormat($date)){
     $date = date_create($date);
     return date_format($date, 'l, F jS Y');
   }else {
      return "";
   }
 }
-echo date_formatter("2015-02-29");
+echo date_formatter("12-12-12");
 ?>
