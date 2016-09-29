@@ -1,9 +1,11 @@
 <?php
 
 function validateDate($date){
-  list($y, $m, $d) = explode("-",$date);
-  if(checkdate($m, $d, $y)){
-    return true;
+  if(preg_match('/\d{1,4}-\d{1,2}-\d{1,2}/',$date)){
+    list($y,$m,$d) = explode("-",$date);
+    if(checkdate($m, $d, $y)){
+      return true;
+    }
   }else false;
 }
 
