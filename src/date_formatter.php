@@ -1,30 +1,18 @@
 <?php
 
-
-
-function validateFormat($date){
-  if(preg_match('/\d{1,4}-\d{1,2}-\d{1,2}/',$date)) {
+function validateDate($date){
+  list($y, $m, $d) = explode("-",$date);
+  if(checkdate($m, $d, $y)){
     return true;
-  }else{
-    return false;
-  }
-}
-
-function validateDate($date, $format = 'Y-m-d'){
-  $timestamp = strtotime($date);
-  $new_date = date('Y-m-d', $timestamp);
-
-  $d = DateTime::createFromFormat($format, $new_date);
-  return $d && $d->format($format) == $new_date;
+  }else false;
 }
 
 function date_formatter($date){
-  if (is_string($date) && validateFormat($date)){
+  if (is_string($date) && validateDate($date)){
     $date = date_create($date);
     return date_format($date, 'l, F jS Y');
   }else {
      return "";
   }
 }
-echo date_formatter("12-12-12");
 ?>
